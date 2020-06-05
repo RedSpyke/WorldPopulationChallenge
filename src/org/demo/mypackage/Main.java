@@ -34,30 +34,31 @@ public class Main {
                     data.add(localData);
                 }
             }
+            for (int i = 0; i < data.size(); i++) {
+                //   System.out.println(data.get(i));
+                year = Integer.parseInt(data.get(i).substring(0,4));
+                // System.out.println(year);
+                population = data.get(i).substring(5);
+                String popFormat =  population.replaceAll(",","");
+                // System.out.println(popFormat);
+                populationNum = Long.parseLong(popFormat);
+                // System.out.println(populationNum);
+
+                if(previousYearPop !=0){
+                    popIncrease = populationNum - previousYearPop;
+                    // System.out.println(popIncrease);
+                    if(largestIncrease < popIncrease){
+                        largestIncrease = popIncrease;
+                        largestYearIncrease = year;
+                    }
+                }
+                previousYearPop = populationNum;
+            }
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
 
-        for (int i = 0; i < data.size(); i++) {
-          //   System.out.println(data.get(i));
-            year = Integer.parseInt(data.get(i).substring(0,4));
-           // System.out.println(year);
-            population = data.get(i).substring(5);
-            String popFormat =  population.replaceAll(",","");
-           // System.out.println(popFormat);
-            populationNum = Long.parseLong(popFormat);
-            // System.out.println(populationNum);
 
-            if(previousYearPop !=0){
-                popIncrease = populationNum - previousYearPop;
-               // System.out.println(popIncrease);
-                if(largestIncrease < popIncrease){
-                    largestIncrease = popIncrease;
-                    largestYearIncrease = year;
-                }
-            }
-            previousYearPop = populationNum;
-        }
         System.out.println("Year: " + largestYearIncrease + " population increase : " + largestIncrease);
 
     }
