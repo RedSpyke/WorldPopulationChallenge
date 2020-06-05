@@ -17,6 +17,8 @@ public class Main {
     public static void main(String[] args) {
         File file = new File ("dataset_91069.txt");
         int largestIncrease = 0;
+        int year = 0;
+        String population = "";
         ArrayList<String> data = new ArrayList<>();
 
         try (Scanner input = new Scanner(file)){
@@ -33,12 +35,13 @@ public class Main {
         }
 
         for (int i = 0; i < data.size(); i++) {
-            System.out.println(data.get(i));
+          //   System.out.println(data.get(i));
+            year = Integer.parseInt(data.get(i).substring(0,4));
+           // System.out.println(year);
+            population = data.get(i).substring(5);
+            System.out.println(population);
+
         }
-
-
-
-
 
     }
 }
