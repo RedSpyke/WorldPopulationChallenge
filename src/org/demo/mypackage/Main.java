@@ -39,7 +39,8 @@ public class Main {
             year = Integer.parseInt(data.get(i).substring(0,4));
            // System.out.println(year);
             population = data.get(i).substring(5);
-            System.out.println(population);
+            String popFormat =  population.replaceAll(",","");
+            System.out.println(popFormat);
 
         }
 
