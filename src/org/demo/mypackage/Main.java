@@ -57,8 +57,6 @@ public class Main {
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
-
-
         System.out.println("Year: " + largestYearIncrease + " population increase : " + largestIncrease);
 
     }
