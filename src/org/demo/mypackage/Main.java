@@ -16,8 +16,12 @@ public class Main {
 
     public static void main(String[] args) {
         File file = new File ("dataset_91069.txt");
-        int largestIncrease = 0;
+        long largestIncrease = 0;
+        long popIncrease = 0;
         int year = 0;
+        int largestYearIncrease = 0;
+        long populationNum = 0;
+        long previousYearPop = 0;
         String population = "";
         ArrayList<String> data = new ArrayList<>();
 
@@ -40,9 +44,22 @@ public class Main {
            // System.out.println(year);
             population = data.get(i).substring(5);
             String popFormat =  population.replaceAll(",","");
-            System.out.println(popFormat);
+           // System.out.println(popFormat);
+            populationNum = Long.parseLong(popFormat);
+            // System.out.println(populationNum);
 
+            if(previousYearPop !=0){
+                popIncrease = populationNum - previousYearPop;
+               // System.out.println(popIncrease);
+                if(largestIncrease < popIncrease){
+                    largestIncrease = popIncrease;
+                    largestYearIncrease = year;
+                }
+            }
+            previousYearPop = populationNum;
         }
+        System.out.println("Year: " + largestYearIncrease + " population increase : " + largestIncrease);
 
     }
 }
+
